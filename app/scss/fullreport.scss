@@ -1,0 +1,67 @@
+tfoot {
+    font-size: 20px;
+    font-weight: 900;
+    background-color: #848484;
+
+    p {
+        margin: 0;
+    }
+}
+
+.green_number_group {
+    background-color: rgba(2, 170, 53, 0.2);
+}
+
+.red_number_group {
+    background-color: rgba(255, 38, 38, 0.2);
+}
+
+.fullreropt__table {
+    thead {
+        p {
+            margin: auto;
+        }
+    }
+
+    tbody {
+        p {
+            margin: 3px 0;
+        }
+    }
+}
+
+.fulltable__absolute {
+    max-width: 120px;
+    font-weight: 900;
+    text-align: center !important;
+}
+
+.fulltable__studens {
+    min-width: 240px !important;
+    width: max-content;
+    vertical-align: top !important;
+}
+
+.fulltable__studens p {
+    opacity: 0;
+    font-weight: 900;
+}
+
+.fulltable__predmets {
+    width: max-content;
+    text-align: left !important;
+}
+
+.fulltable__group {
+    font-weight: 600;
+    width: min-content;
+}
+
+.fullreropt__table td:nth-child(2) {
+    width: 50px;
+}
+
+.fulltable__studens__hor {
+    text-align: left !important;
+    padding-left: 10px !important;
+}
