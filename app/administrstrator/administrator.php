@@ -42,32 +42,132 @@ require "../func_administrator.php";
 
         <div class="row base__group__content">
             <div class="col-md-6">
+                <h5 class="page__title">Реализуемые специальности</h5>
+                <br>
+                <table class="table shadow base__table__students" style="border-collapse: collapse;">
+                    <thead class="thead-dark">
+                        <tr height="50">
+                            <th style="font-weight: 200;">№</th>
+                            <th style="font-weight: 200;">Код специальности</th>
+                            <th style="font-weight: 200;">Название специальности</th>
+                            <th style="font-weight: 200;">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb_base">
+                        <?php foreach ($result_speciality_info as $value) { ?>
+                            <tr class="base__students__table">
+                                <td id="nuber__students"></td>
+                                <td class="table__students"><?= $value['number_speciality'] ?></td>
+                                <td class="table__students"><?= $value['name_speciality'] ?></td>
+                                <td>
+                                    <a href="?edit=<?= $value['id'] ?>speciality" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModal<?= $value['id'] ?>speciality"><i class="fa fa-edit"></i></a>
+                                    <a href="?delete=<?= $value['id'] ?>speciality" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>speciality"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+
+                            <!-- Modal Edit-->
+                            <div class="modal fade" id="editModal<?= $value['id'] ?>speciality" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content shadow">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Редактировать данные специальности
+                                                <?= $value['name_speciality'] ?></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="?id=<?= $value['id'] ?>speciality" method="post">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control edit__pred" name="edit__base__student__431" value="<?= $value['name_speciality'] ?>">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                                    <button type="submit" name="edit__base431__submit" class="btn btn-primary">Обновить</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- DELETE MODAL -->
+                            <div class="modal fade" id="deleteModal<?= $value['id'] ?>speciality" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content shadow">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Удалить специальность
+                                                <span><?= $value['name_speciality'] ?></span> из списка
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>После удаления данные будут не доступны!</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                            <form action="?id=<?= $value['id'] ?>speciality" method="post">
+                                                <button type="submit" name="delete_submit_base_student" class="btn btn-danger">Удалить</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                        <?php } ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="add__student">
+                    <p class="add__student__title">Добавить специальность <i class="fas fa-level-down-alt"></i></i></p>
+                    <form method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="number_speciality" name="number_speciality" value="" placeholder="Номер специальности">
+                            <input type="text" class="form-control" id="name_speciality" name="name_speciality" value="" placeholder="Название специальности">
+                        </div>
+                        <hr>
+                        <div>
+                            <button type="submit" name="add_speciality" class="btn btn-primary" id="add_speciality">Добавить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
                 <h5 class="page__title">Учебные группы</h5>
                 <br>
-                <p id="st_number" hidden>0</p>
-                <p id="number__group__base" hidden><?php echo $group ?></p>
-                <?= $success_stud ?>
                 <table class="table shadow base__table__students" style="border-collapse: collapse;">
                     <thead class="thead-dark">
                         <tr height="50">
                             <th style="font-weight: 200;">№</th>
                             <th style="font-weight: 200;">Группа</th>
                             <th style="font-weight: 200;">Специальность</th>
+                            <th style="font-weight: 200;">Действия</th>
                         </tr>
                     </thead>
                     <tbody id="tb_base">
-                        <?php foreach ($result_base_students as $value) { ?>
+                        <?php foreach ($result_group_info as $value) { ?>
                             <tr class="base__students__table">
                                 <td id="nuber__students"></td>
-                                <td class="table__students"><?= $value['students_name'] ?></td>
+                                <td class="table__students"><?= $value['name_study_group'] ?></td>
+                                <td class="table__students"><?= $value['speciality_study_group'] ?></td>
                                 <td>
-                                    <a href="?edit=<?= $value['id'] ?>base" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModal<?= $value['id'] ?>base"><i class="fa fa-edit"></i></a>
-                                    <a href="?delete=<?= $value['id'] ?>base" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>base"><i class="fa fa-trash"></i></a>
+                                    <a href="?edit=<?= $value['id'] ?>groups" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModal<?= $value['id'] ?>groups"><i class="fa fa-edit"></i></a>
+                                    <a href="?delete=<?= $value['id'] ?>groups" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>groups"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 
                             <!-- Modal Edit-->
-                            <div class="modal fade" id="editModal<?= $value['id'] ?>base" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="editModal<?= $value['id'] ?>groups" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content shadow">
                                         <div class="modal-header">
@@ -78,7 +178,7 @@ require "../func_administrator.php";
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="?id=<?= $value['id'] ?>base" method="post">
+                                            <form action="?id=<?= $value['id'] ?>groups" method="post">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control edit__pred" name="edit__base__student__431" value="<?= $value['students_name'] ?>">
                                                 </div>
@@ -136,100 +236,10 @@ require "../func_administrator.php";
                         </div>
                         <hr>
                         <div>
-                            <button type="submit" name="add_study_group" class="btn btn-primary" id="add_study_group" disabled>Добавить</button>
+                            <button type="submit" name="add_study_group" class="btn btn-primary" id="add_study_group">Добавить</button>
                         </div>
                     </form>
                 </div>
-            </div>
-
-
-            <div class="col-md-6">
-                <h5 class="page__title">Список студентов для пропусков</h5>
-                <br>
-                <p id="st_number" hidden>0</p>
-                <!-- <p id="number__group__base">431-0</p> -->
-                <?= $success_stud ?>
-                <table class="table shadow table__skips__students" style="border-collapse: collapse;">
-                    <thead class="thead-dark">
-                        <tr height="50">
-                            <th style="font-weight: 200;">№</th>
-                            <th style="font-weight: 200;">Студент</th>
-                            <th style="font-weight: 200;">Действия</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tb_base">
-                        <?php foreach ($result_base_students_skips as $value) { ?>
-                            <tr>
-                                <td id="nuber__students"></td>
-                                <td class="table__students"><?= $value['students_name'] ?></td>
-                                <td>
-                                    <a href="?edit=<?= $value['id'] ?>" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModal<?= $value['id'] ?>"><i class="fa fa-edit"></i></a>
-                                    <a href="?delete=<?= $value['id'] ?>" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>" hidden><i class="fa fa-trash"></i></a>
-                                </td>
-                            </tr>
-
-                            <!-- Modal Edit-->
-                            <div class="modal fade" id="editModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content shadow">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Редактировать данные студента
-                                                <?= $value['students_name'] ?></h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="?id=<?= $value['id'] ?>" method="post">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control edit__pred" name="edit__base__student__skip" value="<?= $value['students_name'] ?>">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                                    <button type="submit" name="edit__base__submit__skip" class="btn btn-primary">Обновить</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- DELETE MODAL -->
-                            <div class="modal fade" id="deleteModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content shadow">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Удалить студента
-                                                <span><?= $value['students_name'] ?></span> из списка
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>После удаления данные студента будут не доступны!</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                            <form action="?id=<?= $value['id'] ?>" method="post">
-                                                <button type="submit" name="delete_submit_base_student" class="btn btn-danger">Удалить</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal -->
-                        <?php } ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
-                </table>
-
             </div>
 
 
