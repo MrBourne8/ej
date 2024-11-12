@@ -35,9 +35,9 @@ if (isset($_POST['add_speciality'])) {
 
 // -------------------------------------------------------------------------------------------------------
 // Вывод списка специальностей
-$sql = $pdo->prepare("SELECT * FROM `specialties`");
-$sql->execute();
-$result_speciality_info = $sql->fetchAll();
+// $sql = $pdo->prepare("SELECT * FROM `specialties`");
+// $sql->execute();
+// $result_speciality_info = $sql->fetchAll();
 // Вывод списка специальностей
 // -------------------------------------------------------------------------------------------------------
 

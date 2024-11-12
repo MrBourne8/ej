@@ -231,8 +231,8 @@ require "../func_administrator.php";
                     <p class="add__student__title">Добавить студента <i class="fas fa-level-down-alt"></i></i></p>
                     <form method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="add_name_study_group" name="add_name_study_group" value="" placeholder="Номер группы">
-                            <input type="text" class="form-control" id="speciality_study_group" name="speciality_study_group" value="" placeholder="Специальность">
+                            <input type="text" class="form-control" id="add_number_speciality" name="add_number_speciality" value="" placeholder="Номер группы">
+                            <input type="text" class="form-control" id="add_name_speciality" name="add_name_speciality" value="" placeholder="Специальность">
                         </div>
                         <hr>
                         <div>
