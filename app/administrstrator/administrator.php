@@ -123,6 +123,7 @@ require "../func_administrator.php";
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -130,8 +131,9 @@ require "../func_administrator.php";
                     <p class="add__student__title">Добавить специальность <i class="fas fa-level-down-alt"></i></i></p>
                     <form method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="number_speciality" name="number_speciality" value="" placeholder="Номер специальности">
-                            <input type="text" class="form-control" id="name_speciality" name="name_speciality" value="" placeholder="Название специальности">
+                            <input type="text" class="form-control" id="add_number_speciality" name="add_number_speciality" value="" placeholder="Номер специальности">
+                            <br>
+                            <input type="text" class="form-control" id="add_name_speciality" name="add_name_speciality" value="" placeholder="Название специальности">
                         </div>
                         <hr>
                         <div>
@@ -224,15 +226,22 @@ require "../func_administrator.php";
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
                         </tr>
                     </tfoot>
                 </table>
                 <div class="add__student">
-                    <p class="add__student__title">Добавить студента <i class="fas fa-level-down-alt"></i></i></p>
+                    <p class="add__student__title">Добавить учебную группу <i class="fas fa-level-down-alt"></i></i></p>
                     <form method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="add_number_speciality" name="add_number_speciality" value="" placeholder="Номер группы">
-                            <input type="text" class="form-control" id="add_name_speciality" name="add_name_speciality" value="" placeholder="Специальность">
+                            <input type="text" class="form-control" id="add_name_study_group" name="add_name_study_group" value="" placeholder="Номер группы">
+                            <?php foreach ($result_speciality_info as $value) { ?>
+                                <select class="add__predmet__controle" name="speciality_study_group" value="">
+                                    <option value="" selected hidden>Выберите специаьность</option>
+                                    <option value="<?= $value['name_speciality'] ?>"><?= $value['name_speciality'] ?></option>
+                                </select>
+                            <?php } ?>
+                            <!-- <input type="text" class="form-control" id="speciality_study_group" name="speciality_study_group" value="" placeholder="Специальность"> -->
                         </div>
                         <hr>
                         <div>
@@ -247,7 +256,7 @@ require "../func_administrator.php";
 
 
 
-            <div class="col-md-6" id="predmets_list" hidden>
+            <div class="col-md-6" id="predmets_list">
                 <h5 class="page__title">Список предметов</h5>
                 <br>
                 <?= $success_pred ?>

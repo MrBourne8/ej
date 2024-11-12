@@ -13,7 +13,7 @@ if (isset($_POST['add_speciality'])) {
 	$createTableQuery = "CREATE TABLE IF NOT EXISTS specialties (
         id INT AUTO_INCREMENT PRIMARY KEY,
         number_speciality VARCHAR(100) NOT NULL,
-        name_speciality VARCHAR(100) NOT NULL UNIQUE
+        name_speciality VARCHAR(100) NOT NULL
     )";
 
 	// Выполнение запроса на создание таблицы
@@ -35,9 +35,15 @@ if (isset($_POST['add_speciality'])) {
 
 // -------------------------------------------------------------------------------------------------------
 // Вывод списка специальностей
-// $sql = $pdo->prepare("SELECT * FROM `specialties`");
-// $sql->execute();
-// $result_speciality_info = $sql->fetchAll();
+
+$tableNameSpecialties = "specialties";
+$stmt = $pdo->query("SHOW TABLES LIKE '$tableNameSpecialties'");
+if ($stmt->rowCount() > 0) {
+	$sql = $pdo->prepare("SELECT * FROM `specialties`");
+	$sql->execute();
+	$result_speciality_info = $sql->fetchAll();
+} else {
+}
 // Вывод списка специальностей
 // -------------------------------------------------------------------------------------------------------
 
@@ -57,7 +63,7 @@ if (isset($_POST['add_study_group'])) {
 	$createTableQuery = "CREATE TABLE IF NOT EXISTS stydy_groups (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name_study_group VARCHAR(100) NOT NULL,
-        speciality_study_group VARCHAR(100) NOT NULL UNIQUE
+        speciality_study_group VARCHAR(100) NOT NULL
     )";
 
 	// Выполнение запроса на создание таблицы
@@ -79,8 +85,14 @@ if (isset($_POST['add_study_group'])) {
 
 // -------------------------------------------------------------------------------------------------------
 // Вывод списка учебных групп
-$sql = $pdo->prepare("SELECT * FROM `stydy_groups`");
-$sql->execute();
-$result_group_info = $sql->fetchAll();
+$tableNameStydy_groups = "stydy_groups";
+$stmt = $pdo->query("SHOW TABLES LIKE '$tableNameStydy_groups'");
+if ($stmt->rowCount() > 0) {
+	$sql = $pdo->prepare("SELECT * FROM `stydy_groups`");
+	$sql->execute();
+	$result_group_info = $sql->fetchAll();
+} else {
+	
+}
 // Вывод списка учебных групп
 // -------------------------------------------------------------------------------------------------------
