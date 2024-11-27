@@ -241,13 +241,14 @@ require "../func_administrator.php";
                     <form method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" id="add_name_study_group" name="add_name_study_group" value="" placeholder="Номер группы">
-                            <?php foreach ($result_speciality_info as $value) { ?>
-                                <select class="add__predmet__controle" name="speciality_study_group" value="">
+                            <select class="add__predmet__controle" name="speciality_study_group" value="">
+                                <?php foreach ($result_speciality_info as $value) { ?>
                                     <option value="" selected hidden>Выберите специаьность</option>
                                     <option value="<?= $value['name_speciality'] ?>"><?= $value['name_speciality'] ?></option>
-                                </select>
-                            <?php } ?>
-                            <!-- <input type="text" class="form-control" id="speciality_study_group" name="speciality_study_group" value="" placeholder="Специальность"> -->
+                                    <?php } ?>
+                            </select>
+                        
+                        <!-- <input type="text" class="form-control" id="speciality_study_group" name="speciality_study_group" value="" placeholder="Специальность"> -->
                         </div>
                         <hr>
                         <div>
