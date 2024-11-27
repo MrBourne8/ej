@@ -79,11 +79,14 @@ require "../func_administrator.php";
                                         <div class="modal-body">
                                             <form action="?id=<?= $value['id'] ?>speciality" method="post">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control edit__pred" name="edit__base__student__431" value="<?= $value['name_speciality'] ?>">
+                                                    <input type="text" class="form-control edit__pred" name="edit_number_speciality" value="<?= $value['number_speciality'] ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control edit__pred" name="edit_name_speciality" value="<?= $value['name_speciality'] ?>">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                                    <button type="submit" name="edit__base431__submit" class="btn btn-primary">Обновить</button>
+                                                    <button type="submit" name="edit_speciality" class="btn btn-primary">Обновить</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -109,7 +112,7 @@ require "../func_administrator.php";
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
                                             <form action="?id=<?= $value['id'] ?>speciality" method="post">
-                                                <button type="submit" name="delete_submit_base_student" class="btn btn-danger">Удалить</button>
+                                                <button type="submit" name="delete_speciality" class="btn btn-danger">Удалить</button>
                                             </form>
                                         </div>
                                     </div>
@@ -174,7 +177,7 @@ require "../func_administrator.php";
                                     <div class="modal-content shadow">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Редактировать данные группы
-                                                <?= $value['students_name'] ?></h5>
+                                                <?= $value['name_study_group'] ?></h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -182,11 +185,14 @@ require "../func_administrator.php";
                                         <div class="modal-body">
                                             <form action="?id=<?= $value['id'] ?>groups" method="post">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control edit__pred" name="edit__base__student__431" value="<?= $value['students_name'] ?>">
+                                                    <input type="text" class="form-control edit__pred" name="edit_name_study_group" value="<?= $value['name_study_group'] ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control edit__pred" name="edit_speciality_study_group" value="<?= $value['speciality_study_group'] ?>">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                                    <button type="submit" name="edit__base431__submit" class="btn btn-primary">Обновить</button>
+                                                    <button type="submit" name="edit_study_group" class="btn btn-primary">Обновить</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -195,12 +201,12 @@ require "../func_administrator.php";
                             </div>
 
                             <!-- DELETE MODAL -->
-                            <div class="modal fade" id="deleteModal<?= $value['id'] ?>base" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="deleteModal<?= $value['id'] ?>groups" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content shadow">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Удалить группу
-                                                <span><?= $value['students_name'] ?></span> из списка
+                                                <span><?= $value['name_study_group'] ?></span> из списка
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -212,7 +218,7 @@ require "../func_administrator.php";
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
                                             <form action="?id=<?= $value['id'] ?>base" method="post">
-                                                <button type="submit" name="delete_submit_base_student" class="btn btn-danger">Удалить</button>
+                                                <button type="submit" name="delete_stydy_group" class="btn btn-danger">Удалить</button>
                                             </form>
                                         </div>
                                     </div>

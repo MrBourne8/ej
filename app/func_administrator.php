@@ -32,10 +32,35 @@ if (isset($_POST['add_speciality'])) {
 // Создание списка специальностей
 // -------------------------------------------------------------------------------------------------------
 
+// -------------------------------------------------------------------------------------------------------
+// Редактирование специальностей
+$edit_number_speciality = $_POST['edit_number_speciality'] ?? null;
+$edit_name_speciality = $_POST['edit_name_speciality'] ?? null;
+$id_speciality = $_GET['id'] ?? null;
+
+if (isset($_POST['edit_speciality'])) {
+	$sqll = "UPDATE specialties SET number_speciality=?, name_speciality=? WHERE id=?";
+	$querys = $pdo->prepare($sqll);
+	$querys->execute([$edit_number_speciality, $edit_name_speciality, $id_speciality]);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+// Редактирование специальностей
+// -------------------------------------------------------------------------------------------------------
+
+
+// -------------------------------------------------------------------------------------------------------
+// Удаление специальностей
+if (isset($_POST['delete_speciality'])) {
+	$sql = "DELETE FROM specialties WHERE id=?";
+	$query = $pdo->prepare($sql);
+	$query->execute([$id_speciality]);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+// Удаление специальностей
+// -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
 // Вывод списка специальностей
-
 $tableNameSpecialties = "specialties";
 $stmt = $pdo->query("SHOW TABLES LIKE '$tableNameSpecialties'");
 if ($stmt->rowCount() > 0) {
@@ -82,6 +107,31 @@ if (isset($_POST['add_study_group'])) {
 // Создание списка учебных групп
 // -------------------------------------------------------------------------------------------------------
 
+// -------------------------------------------------------------------------------------------------------
+// Редактирование учебных групп
+$edit_name_study_group = $_POST['edit_name_study_group'] ?? null;
+$edit_speciality_study_group = $_POST['edit_speciality_study_group'] ?? null;
+$id_group = $_GET['id'] ?? null;
+
+if (isset($_POST['edit_study_group'])) {
+	$sqll = "UPDATE stydy_groups SET name_study_group=?, speciality_study_group=? WHERE id=?";
+	$querys = $pdo->prepare($sqll);
+	$querys->execute([$edit_name_study_group, $edit_speciality_study_group, $id_group]);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+// Редактирование учебных групп
+// -------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------------
+// Удаление учебных групп
+if (isset($_POST['delete_stydy_group'])) {
+	$sql = "DELETE FROM stydy_groups WHERE id=?";
+	$query = $pdo->prepare($sql);
+	$query->execute([$id_speciality]);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+// Удаление учебных групп
+// -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
 // Вывод списка учебных групп
