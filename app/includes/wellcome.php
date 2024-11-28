@@ -21,15 +21,19 @@
     </a>
     <nav class="menu">
         <ul class="topmenu main-menu">
-           
-                <li>
-                    <a href="/index.php" class="nav__li"><i class="fas fa-school"></i> Главная</a>
-                </li>
 
-                <li id="nav__groups">
-                    <a href="../administrstrator/administrator.php" class="active groups">АДМИНИСТРАТОР</a>
-                </li>
-                            
+            <li>
+                <a href="/index.php" class="nav__li"><i class="fas fa-school"></i> Главная</a>
+            </li>
+
+            <li id="nav__groups">
+                <a href="../administrstrator/administrator.php" class="active groups">АДМИНИСТРАТОР</a>
+            </li>
+
+            <li id="nav__groups">
+                <a href="../curator/curator.php" class="active groups">Моя группа</a>
+            </li>
+
         </ul>
     </nav>
 </div>
