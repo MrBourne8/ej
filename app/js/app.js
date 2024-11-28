@@ -198,56 +198,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    $('.table tbody tr').each(function (i) {
+    $('.base__table__speciality tbody tr').each(function (i) {
+        var number = i + 1;
+        $(this).find('td:first').text(number + ".");
+    });
+    $('.base__table__group tbody tr').each(function (i) {
         var number = i + 1;
         $(this).find('td:first').text(number + ".");
     });
 
-    $('.table__schedule_day1 tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-
-    $('.table__schedule_day2 tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-
-    $('.table__schedule_day3 tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-
-    $('.table__schedule_day4 tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-
-    $('.table__schedule_day5 tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-
-    $('.table__schedule_day6 tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-
-
-    $('.table__base__predmers tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-    $('.table__skips__students tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-    $('.table__skips__sem1 tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-
-
+    
 
 
     // Создание массива студентов, заголовки таблицы

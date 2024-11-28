@@ -44,7 +44,7 @@ require "../func_administrator.php";
             <div class="col-md-6">
                 <h5 class="page__title">Реализуемые специальности</h5>
                 <br>
-                <table class="table shadow base__table__students" style="border-collapse: collapse;">
+                <table class="table shadow base__table__speciality" style="border-collapse: collapse;">
                     <thead class="thead-dark">
                         <tr height="50">
                             <th style="font-weight: 200;">№</th>
@@ -150,7 +150,7 @@ require "../func_administrator.php";
             <div class="col-md-6">
                 <h5 class="page__title">Учебные группы</h5>
                 <br>
-                <table class="table shadow base__table__students" style="border-collapse: collapse;">
+                <table class="table shadow base__table__group" style="border-collapse: collapse;">
                     <thead class="thead-dark">
                         <tr height="50">
                             <th style="font-weight: 200;">№</th>
@@ -245,10 +245,10 @@ require "../func_administrator.php";
                                 <?php foreach ($result_speciality_info as $value) { ?>
                                     <option value="" selected hidden>Выберите специаьность</option>
                                     <option value="<?= $value['name_speciality'] ?>"><?= $value['name_speciality'] ?></option>
-                                    <?php } ?>
+                                <?php } ?>
                             </select>
-                        
-                        <!-- <input type="text" class="form-control" id="speciality_study_group" name="speciality_study_group" value="" placeholder="Специальность"> -->
+
+                            <!-- <input type="text" class="form-control" id="speciality_study_group" name="speciality_study_group" value="" placeholder="Специальность"> -->
                         </div>
                         <hr>
                         <div>
