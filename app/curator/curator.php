@@ -3,6 +3,8 @@ require "../db.php";
 require "../config.php";
 
 $user_id = $_SESSION['logged_user']->id;
+$curator_group = $_SESSION['logged_user']->curator_group;
+$user_role = $_SESSION['logged_user']->role;
 
 if ($user_id == 70) {
     $table = 'notes101';
@@ -540,6 +542,7 @@ if ($user_id == 70) {
                                 <input type="text" name="hobbies" placeholder="Занятость во внеурочное время">
                                 <br>
                                 <input type="text" name="health_group" placeholder="Группа здоровья">
+                                <input type="text" name="student_group" value="<?php echo"$curator_group";?>">
                             </div>
                             <hr>
                             <div class="form-group">
