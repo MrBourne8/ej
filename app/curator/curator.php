@@ -528,40 +528,40 @@ if ($user_id == 70) {
                                 <input type="text" name="birth_student" placeholder="Дата рождения">
                                 <input type="text" name="phone_student" placeholder="Телефон">
                                 <br>
-                                <label for="">Пол</label>
-                                <select name="" id="">
-                                    <option value="Ж">М</option>
+                                <label for="gender">Пол</label>
+                                <select name="gender">
+                                    <option value="М">М</option>
                                     <option value="Ж">Ж</option>
                                 </select>
-                                <input type="text" name="" placeholder="Адрес по прописке">
+                                <input type="text" name="registration" placeholder="Адрес по прописке">
                                 <br>
-                                <input type="text" name="" placeholder="Адрес фактического проживания">
+                                <input type="text" name="adress" placeholder="Адрес фактического проживания">
                                 <br>
-                                <input type="text" name="" placeholder="Занятость во внеурочное время">
+                                <input type="text" name="hobbies" placeholder="Занятость во внеурочное время">
                                 <br>
-                                <input type="text" name="" placeholder="Группа здоровья">
+                                <input type="text" name="health_group" placeholder="Группа здоровья">
                             </div>
                             <hr>
                             <div class="form-group">
                                 <h5 class="modal-title">Данные о родителях</h5>
                                 <p>Мать</p>
-                                <input type="text" name="" placeholder="Фимилия">
-                                <input type="text" name="" placeholder="Имя">
-                                <input type="text" name="" placeholder="Отчество">
+                                <input type="text" name="surname_mom" placeholder="Фимилия">
+                                <input type="text" name="name_mom" placeholder="Имя">
+                                <input type="text" name="patronymic_mom" placeholder="Отчество">
                                 <br>
-                                <input type="text" name="" placeholder="Телефон">
+                                <input type="text" name="phone_mom" placeholder="Телефон">
                                 <br>
-                                <input type="text" name="" placeholder="Место работы, должность">
+                                <input type="text" name="job_mom" placeholder="Место работы, должность">
                             </div>
                             <div class="form-group">
                                 <p>Отец</p>
-                                <input type="text" name="" placeholder="Фимилия">
-                                <input type="text" name="" placeholder="Имя">
-                                <input type="text" name="" placeholder="Отчество">
+                                <input type="text" name="surname_father" placeholder="Фимилия">
+                                <input type="text" name="name_father" placeholder="Имя">
+                                <input type="text" name="patronymic_father" placeholder="Отчество">
                                 <br>
-                                <input type="text" name="" placeholder="Телефон">
+                                <input type="text" name="phone_father" placeholder="Телефон">
                                 <br>
-                                <input type="text" name="" placeholder="Место работы, должность">
+                                <input type="text" name="job_father" placeholder="Место работы, должность">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
