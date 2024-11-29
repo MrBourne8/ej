@@ -103,6 +103,38 @@ if (isset($_POST['add_study_group'])) {
 	    <span aria-hidden="true">&times;</span>
 	  </button>
 	</div>';
+
+
+
+	
+	// SQL-запрос для создания таблицы
+	$createTableQuery = "CREATE TABLE IF NOT EXISTS stydents_$add_name_study_group (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name_student VARCHAR(100) NOT NULL,
+        surname_student VARCHAR(100) NOT NULL,
+		patronymic_student VARCHAR(100) NOT NULL,
+		birth_student VARCHAR(100),
+		phone_student VARCHAR(100),
+		gender_student VARCHAR(100),
+		registration_student VARCHAR(100),
+		adress_student VARCHAR(100),
+		hobbies_student VARCHAR(100),
+		health_group_student VARCHAR(100),
+		student_group VARCHAR(100),
+		surname_mom VARCHAR(100),
+		name_mom VARCHAR(100),
+		patronymic_mom VARCHAR(100),
+		phone_mom VARCHAR(100),
+		job_mom VARCHAR(100),
+		surname_father VARCHAR(100),
+		name_father VARCHAR(100),
+		patronymic_father VARCHAR(100),
+		phone_father VARCHAR(100),
+		job_father VARCHAR(100)
+    )";
+
+	// Выполнение запроса на создание таблицы
+	$pdo->exec($createTableQuery);
 };
 // Создание списка учебных групп
 // -------------------------------------------------------------------------------------------------------

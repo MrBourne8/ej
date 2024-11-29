@@ -523,26 +523,26 @@ if ($user_id == 70) {
                         <form action="" method="post">
                             <div class="form-group">
                                 <p>Данные о студенте</p>
-                                <input type="text" name="name_student" placeholder="Фимилия">
-                                <input type="text" name="surname_student" placeholder="Имя">
+                                <input type="text" name="surname_student" placeholder="Фимилия">
+                                <input type="text" name="name_student" placeholder="Имя">
                                 <input type="text" name="patronymic_student" placeholder="Отчество">
                                 <br>
                                 <input type="text" name="birth_student" placeholder="Дата рождения">
                                 <input type="text" name="phone_student" placeholder="Телефон">
                                 <br>
-                                <label for="gender">Пол</label>
-                                <select name="gender">
+                                <label for="gender_student">Пол</label>
+                                <select name="gender_student">
                                     <option value="М">М</option>
                                     <option value="Ж">Ж</option>
                                 </select>
-                                <input type="text" name="registration" placeholder="Адрес по прописке">
+                                <input type="text" name="registration_student" placeholder="Адрес по прописке">
                                 <br>
-                                <input type="text" name="adress" placeholder="Адрес фактического проживания">
+                                <input type="text" name="adress_student" placeholder="Адрес фактического проживания">
                                 <br>
-                                <input type="text" name="hobbies" placeholder="Занятость во внеурочное время">
+                                <input type="text" name="hobbies_student" placeholder="Занятость во внеурочное время">
                                 <br>
-                                <input type="text" name="health_group" placeholder="Группа здоровья">
-                                <input type="text" name="student_group" value="<?php echo"$curator_group";?>">
+                                <input type="text" name="health_group_student" placeholder="Группа здоровья">
+                                <input type="text" name="student_group" value="<?php echo "$curator_group"; ?>">
                             </div>
                             <hr>
                             <div class="form-group">
