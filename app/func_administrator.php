@@ -90,7 +90,6 @@ if (isset($_POST['add_study_group'])) {
         name_study_group VARCHAR(100) NOT NULL,
         speciality_study_group VARCHAR(100) NOT NULL
     )";
-
 	// Выполнение запроса на создание таблицы
 	$pdo->exec($createTableQuery);
 
@@ -107,7 +106,7 @@ if (isset($_POST['add_study_group'])) {
 
 
 	
-	// SQL-запрос для создания таблицы
+	// SQL-запрос для создания таблицы студентов
 	$createTableQuery = "CREATE TABLE IF NOT EXISTS stydents_$add_name_study_group (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name_student VARCHAR(100) NOT NULL,
@@ -132,7 +131,24 @@ if (isset($_POST['add_study_group'])) {
 		phone_father VARCHAR(100),
 		job_father VARCHAR(100)
     )";
+	// Выполнение запроса на создание таблицы
+	$pdo->exec($createTableQuery);
 
+	// SQL-запрос для создания таблицы предметов 1 полугодие
+	$createTableQuery = "CREATE TABLE IF NOT EXISTS predmets_1semestr_$add_name_study_group (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name_predmet VARCHAR(100) NOT NULL,
+        type_control VARCHAR(100) NOT NULL
+    )";
+	// Выполнение запроса на создание таблицы
+	$pdo->exec($createTableQuery);
+
+	// SQL-запрос для создания таблицы предметов 2 полугодие
+	$createTableQuery = "CREATE TABLE IF NOT EXISTS predmets_2semestr_$add_name_study_group (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name_predmet VARCHAR(100) NOT NULL,
+        type_control VARCHAR(100) NOT NULL
+    )";
 	// Выполнение запроса на создание таблицы
 	$pdo->exec($createTableQuery);
 };

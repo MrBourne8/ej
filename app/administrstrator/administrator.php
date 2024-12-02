@@ -264,7 +264,7 @@ require "../func_administrator.php";
 
 
             <div class="col-md-6" id="predmets_list">
-                <h5 class="page__title">Список предметов</h5>
+                <h5 class="page__title">Информация о текущем периоде обучения</h5>
                 <br>
                 <?= $success_pred ?>
                 <table class="table shadow table__base__predmers" style="border-collapse: collapse;">
