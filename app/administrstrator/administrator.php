@@ -258,11 +258,6 @@ require "../func_administrator.php";
                 </div>
             </div>
 
-
-
-
-
-
             <div class="col-md-6" id="predmets_list">
                 <h5 class="page__title">Информация о текущем периоде обучения</h5>
                 <br>
@@ -271,78 +266,38 @@ require "../func_administrator.php";
                     <thead class="thead-dark">
                         <tr height="50">
                             <th style="font-weight: 200;">№</th>
-                            <th style="font-weight: 200;">Предмет</th>
-                            <th style="font-weight: 200;">Вид контроля</th>
-                            <th style="font-weight: 200;">Код предмета</th>
+                            <th style="font-weight: 200;">Семестр</th>
+                            <th style="font-weight: 200;">Учебный год</th>
                             <th style="font-weight: 200;">Действия</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($result_base_predmets as $value) { ?>
+                        <?php foreach ($result_current_period as $value) { ?>
                             <tr>
                                 <td id="nuber__predmetsts"></td>
-                                <td class="table__predmets"><?= $value['predmets_name'] ?></td>
-                                <td><?= $value['controle_variant'] ?></td>
-                                <td><?= $value['predmet_code'] ?></td>
+                                <td class="table__predmets"><?= $value['current_semester'] ?></td>
+                                <td><?= $value['current_year'] ?></td>
                                 <td>
-                                    <a href="?edit=<?= $value['id_pred'] ?>" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModalPred<?= $value['id_pred'] ?>"><i class="fa fa-edit"></i></a>
-                                    <a href="?delete=<?= $value['id_pred'] ?>" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModalPred<?= $value['id_pred'] ?>"><i class="fa fa-trash"></i></a>
+                                    <a href="?edit=<?= $value['id'] ?>period" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModalPred<?= $value['id'] ?>period"><i class="fa fa-edit"></i></a>
+                                    <a href="?delete=<?= $value['id'] ?>period" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModalPred<?= $value['id'] ?>period"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 
                             <!-- Modal Edit-->
-                            <div class="modal fade" id="editModalPred<?= $value['id_pred'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="editModalPred<?= $value['id'] ?>period" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content shadow">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Редактировать предмет
-                                                <?= $value['predmets_name'] ?></h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Редактировать период обучения</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="?id=<?= $value['id_pred'] ?>" method="post">
+                                            <form action="?id=<?= $value['id'] ?>period" method="post">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control edit__pred" name="edit__base__predmet__431" value="<?= $value['predmets_name'] ?>">
-                                                    <select class="add__predmet__controle" name="edit_controle_variant" value="<?= $value['controle_variant'] ?>">
-                                                        <option value="<?= $value['controle_variant'] ?>" selected hidden>
-                                                            <?= $value['controle_variant'] ?></option>
-                                                        <option value="0">Вид контроля</option>
-                                                        <option value="Зачет">Зачет</option>
-                                                        <option value="Дифференцированный зачет">Дифференцированный зачет
-                                                        </option>
-                                                        <option value="Контрольные работы">Контрольные работы</option>
-                                                        <option value="Экзамен">Экзамен</option>
-                                                        <option value="Семестровая отметка">Семестровая отметка</option>
-                                                    </select>
-                                                    <select class="add__predmet__controle" name="edit__predmet_code" value="<?= $value['predmet_code'] ?>">
-                                                        <option value="<?= $value['predmet_code'] ?>" selected hidden>
-                                                            <?= $value['predmet_code'] ?></option>
-                                                        <option value="pred_01">pred_01</option>
-                                                        <option value="pred_02">pred_02</option>
-                                                        <option value="pred_03">pred_03</option>
-                                                        <option value="pred_04">pred_04</option>
-                                                        <option value="pred_05">pred_05</option>
-                                                        <option value="pred_06">pred_06</option>
-                                                        <option value="pred_07">pred_07</option>
-                                                        <option value="pred_08">pred_08</option>
-                                                        <option value="pred_09">pred_09</option>
-                                                        <option value="pred_10">pred_10</option>
-                                                        <option value="pred_11">pred_11</option>
-                                                        <option value="pred_12">pred_12</option>
-                                                        <option value="pred_13">pred_13</option>
-                                                        <option value="pred_14">pred_14</option>
-                                                        <option value="pred_15">pred_15</option>
-                                                        <option value="pred_16">pred_16</option>
-                                                        <option value="pred_17">pred_17</option>
-                                                        <option value="pred_18">pred_18</option>
-                                                        <option value="pred_19">pred_19</option>
-                                                        <option value="pred_20">pred_20</option>
-                                                        <option value="pred_21">pred_21</option>
-                                                        <option value="pred_22">pred_22</option>
-                                                        <option value="pred_23">pred_23</option>
-                                                    </select>
+                                                    <input type="text" class="form-control edit__pred" name="edit_current_semester" value="<?= $value['current_semester'] ?>">
+                                                    <input type="text" class="form-control edit__pred" name="edit_current_year" value="<?= $value['current_year'] ?>">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
@@ -355,13 +310,11 @@ require "../func_administrator.php";
                             </div>
 
                             <!-- DELETE MODAL -->
-                            <div class="modal fade" id="deleteModalPred<?= $value['id_pred'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="deleteModalPred<?= $value['id'] ?>period" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content shadow">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Удалить предмет
-                                                <span><?= $value['predmets_name'] ?></span> из списка
-                                            </h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Удалить</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -371,7 +324,7 @@ require "../func_administrator.php";
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                            <form action="?id=<?= $value['id_pred'] ?>" method="post">
+                                            <form action="?id=<?= $value['id'] ?>period" method="post">
                                                 <button type="submit" name="delete_submit_base_predmet" class="btn btn-danger">Удалить</button>
                                             </form>
                                         </div>
@@ -387,56 +340,9 @@ require "../func_administrator.php";
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
                         </tr>
                     </tfoot>
                 </table>
-                <div class="add__predmets">
-                    <p class="add__predmet__title">Добавить предмет <i class="fas fa-level-down-alt"></i></p>
-                    <form method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="add__predmet__input" name="add_pred" value="" placeholder="Название предмета">
-                            <select class="add__predmet__controle" id="add__predmet__controle" name="controle_variant">
-                                <option value="0">Вид контроля</option>
-                                <option value="Зачет">Зачет</option>
-                                <option value="Дифференцированный зачет">Дифференцированный зачет</option>
-                                <option value="Контрольные работы">Контрольные работы</option>
-                                <option value="Экзамен">Экзамен</option>
-                                <option value="Семестровая отметка">Семестровая отметка</option>
-                            </select>
-                            <select class="add__predmet__controle" id="add__predmet__code" name="predmet_code">
-                                <option value="0">Код пердмета</option>
-                                <option value="pred_01">pred_01</option>
-                                <option value="pred_02">pred_02</option>
-                                <option value="pred_03">pred_03</option>
-                                <option value="pred_04">pred_04</option>
-                                <option value="pred_05">pred_05</option>
-                                <option value="pred_06">pred_06</option>
-                                <option value="pred_07">pred_07</option>
-                                <option value="pred_08">pred_08</option>
-                                <option value="pred_09">pred_09</option>
-                                <option value="pred_10">pred_10</option>
-                                <option value="pred_11">pred_11</option>
-                                <option value="pred_12">pred_12</option>
-                                <option value="pred_13">pred_13</option>
-                                <option value="pred_14">pred_14</option>
-                                <option value="pred_15">pred_15</option>
-                                <option value="pred_16">pred_16</option>
-                                <option value="pred_17">pred_17</option>
-                                <option value="pred_18">pred_18</option>
-                                <option value="pred_19">pred_19</option>
-                                <option value="pred_20">pred_20</option>
-                                <option value="pred_21">pred_21</option>
-                                <option value="pred_22">pred_22</option>
-                                <option value="pred_23">pred_23</option>
-                            </select>
-                        </div>
-                        <hr>
-                        <div>
-                            <button type="submit" name="add__predmet__submit" id="add__predmet__submit" class="btn btn-primary" disabled>Добавить</button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>

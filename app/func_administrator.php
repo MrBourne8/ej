@@ -194,3 +194,31 @@ if ($stmt->rowCount() > 0) {
 }
 // Вывод списка учебных групп
 // -------------------------------------------------------------------------------------------------------
+
+
+// -------------------------------------------------------------------------------------------------------
+// Редактирование текущего периода обучения
+$edit_current_semester = $_POST['edit_current_semester'] ?? null;
+$edit_current_year = $_POST['edit_current_year'] ?? null;
+$id_current_semester = $_GET['id'] ?? null;
+
+if (isset($_POST['edit_study_group'])) {
+	$sqll = "UPDATE current_period SET current_semester=?, current_year=? WHERE id=?";
+	$querys = $pdo->prepare($sqll);
+	$querys->execute([$edit_current_semester, $edit_current_year, $$id_current_semester]);
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
+// Редактирование текущего периода обучения
+// -------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------------
+// Вывод текущего периода обучения
+$stmt = $pdo->query("SHOW TABLES LIKE 'current_period'");
+if ($stmt->rowCount() > 0) {
+	$sql = $pdo->prepare("SELECT * FROM `current_period`");
+	$sql->execute();
+	$result_current_period = $sql->fetchAll();
+} else {
+}
+// Вывод текущего периода обучения
+// -------------------------------------------------------------------------------------------------------
