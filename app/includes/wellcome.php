@@ -5,6 +5,7 @@
 
     <p id="id__user" name="user_id" hidden><?php echo $_SESSION['logged_user']->id ?></p>
     <p id="role__user" name="" hidden><?php echo $_SESSION['logged_user']->role ?></p>
+    <p id="curator_group" name="" hidden><?php echo $_SESSION['logged_user']->curator_group ?></p>
     <p id="dates" hidden>
         <?php
         date_default_timezone_set('Asia/Novosibirsk');

@@ -1,6 +1,8 @@
 <?php
 require "../db.php";
 require "../config.php";
+require "../func_curator.php";
+
 
 $user_id = $_SESSION['logged_user']->id;
 $curator_group = $_SESSION['logged_user']->curator_group;
@@ -51,7 +53,6 @@ if ($user_id == 70) {
         <div class="row">
             <div class="col-md-12">
 
-                <?= $success ?>
                 <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><i class="fa fa-user-plus" title="Добавить студента"></i> Добавить студента</button>
                 <h4 class="page__title">Общие сведения об обучающихся</h4>
                 <table class="table shadow table__report" id="myTable" style="border-collapse: collapse;">
@@ -69,368 +70,123 @@ if ($user_id == 70) {
                         </tr>
                     </thead>
                     <tbody data-name="a">
-                        <?php foreach ($result as $value) { ?>
+                        <?php foreach ($result_stydents as $value) { ?>
                             <tr class="students__row">
                                 <td id="nuber__students"></td>
-                                <td id="nuber__students"></td>
-                                <td id="nuber__students"></td>
-                                <td id="nuber__students"></td>
-                                <td id="nuber__students"></td>
-                                <td id="nuber__students"></td>
-                                <td id="nuber__students"></td>
-                                <td id="nuber__students"></td>
+                                <td id="nuber__students"><?= $value['surname_student'] ?> <?= $value['name_student'] ?> <?= $value['patronymic_student'] ?></td>
+                                <td id="nuber__students"><?= $value['birth_student'] ?></td>
+                                <td id="nuber__students"><?= $value['gender_student'] ?></td>
+                                <td id="nuber__students"><?= $value['phone_student'] ?></td>
+                                <td id="nuber__students"><?= $value['surname_mom'] ?> <?= $value['name_mom'] ?> <?= $value['patronymic_mom'] ?></td>
+                                <td id="nuber__students"><?= $value['surname_father'] ?> <?= $value['name_father'] ?> <?= $value['patronymic_father'] ?></td>
+                                <td id="nuber__students"><?= $value['registration_student'] ?></td>
                                 <td class="action">
-                                    <a href="?edit=<?= $value['id'] ?>" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModal<?= $value['id'] ?>"><i class="fa fa-edit"></i></a>
-                                    <a href="?delete=<?= $value['id'] ?>" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>"><i class="fa fa-trash"></i></a>
+                                    <a href="?edit=<?= $value['id'] ?>edit_student" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModal<?= $value['id'] ?>edit_student"><i class="fa fa-edit"></i></a>
+                                    <a href="?delete=<?= $value['id'] ?>delete_student" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>delete_student"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 
                             <!-- Modal Edit-->
-                            <div class="modal fade edit__pred__modal" id="editModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade edit__pred__modal" id="editModal<?= $value['id'] ?>edit_student" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content shadow">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Редактировать данные студента
-                                                <?= $value['predmet'] ?></h5>
+                                                <?= $value['surname_student'] ?> <?= $value['name_student'] ?> <?= $value['patronymic_student'] ?></h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="?id=<?= $value['id'] ?>" method="post" id="qw">
-                                                <div class="form-group">
-                                                    <p class="edit__name" name="edit_students" value="<?= $value['students'] ?>"><?= $value['students'] ?></p>
-                                                    <input type="text" class="form-control edit__pred" hidden name="edit_students" value="<?= $value['students'] ?>">
+                                            <form action="?id=<?= $value['id'] ?>" method="post">
+                                                <h5>Данные о студенте</h5>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Фамилия</p>
+                                                    <input type="text" name="edit_surname_student" value="<?= $value['surname_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_01">
-                                                    <p class="edit__pred__name">Русский язык</p>
-                                                    <select class="edit__note__digit" name="edit_pred_01" value="<?= $value['pred_01'] ?>" id="">
-                                                        <option value="<?= $value['pred_01'] ?>" selected hidden>
-                                                            <?= $value['pred_01'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Имя</p>
+                                                    <input type="text" name="edit_name_student" value="<?= $value['name_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_02">
-                                                    <p class="edit__pred__name">Литература</p>
-                                                    <select class="edit__note__digit" name="edit_pred_02" value="<?= $value['pred_02'] ?>" id="">
-                                                        <option value="<?= $value['pred_02'] ?>" selected hidden>
-                                                            <?= $value['pred_02'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Отчество</p>
+                                                    <input type="text" name="edit_patronymic_student" value="<?= $value['patronymic_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_03">
-                                                    <p class="edit__pred__name">Иностранный язык</p>
-                                                    <select class="edit__note__digit" name="edit_pred_03" value="<?= $value['pred_03'] ?>" id="">
-                                                        <option value="<?= $value['pred_03'] ?>" selected hidden>
-                                                            <?= $value['pred_03'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Дата рождения</p>
+                                                    <input type="text" name="edit_birth_student" value="<?= $value['birth_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_04">
-                                                    <p class="edit__pred__name">Математика</p>
-                                                    <select class="edit__note__digit" name="edit_pred_04" value="<?= $value['pred_04'] ?>" id="">
-                                                        <option value="<?= $value['pred_04'] ?>" selected hidden>
-                                                            <?= $value['pred_04'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Телефон</p>
+                                                    <input type="text" name="edit_phone_student" value="<?= $value['phone_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_05">
-                                                    <p class="edit__pred__name">История</p>
-                                                    <select class="edit__note__digit" name="edit_pred_05" value="<?= $value['pred_05'] ?>" id="">
-                                                        <option value="<?= $value['pred_05'] ?>" selected hidden>
-                                                            <?= $value['pred_05'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Пол</p>
+                                                    <input type="text" name="edit_gender_student" value="<?= $value['gender_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_06">
-                                                    <p class="edit__pred__name">Физическая культура</p>
-                                                    <select class="edit__note__digit" name="edit_pred_06" value="<?= $value['pred_06'] ?>" id="">
-                                                        <option value="<?= $value['pred_06'] ?>" selected hidden>
-                                                            <?= $value['pred_06'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Адрес по прописке</p>
+                                                    <input type="text" name="edit_registration_student" value="<?= $value['registration_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_07">
-                                                    <p class="edit__pred__name">Основы безопасности жизнедеятельности</p>
-                                                    <select class="edit__note__digit" name="edit_pred_07" value="<?= $value['pred_07'] ?>" id="">
-                                                        <option value="<?= $value['pred_07'] ?>" selected hidden>
-                                                            <?= $value['pred_07'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Адрес фактического проживания</p>
+                                                    <input type="text" name="edit_adress_student" value="<?= $value['adress_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_08">
-                                                    <p class="edit__pred__name">Астрономия</p>
-                                                    <select class="edit__note__digit" name="edit_pred_08" value="<?= $value['pred_08'] ?>" id="">
-                                                        <option value="<?= $value['pred_08'] ?>" selected hidden>
-                                                            <?= $value['pred_08'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Занятость во внеурочное время</p>
+                                                    <input type="text" name="edit_hobbies_student" value="<?= $value['hobbies_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_09">
-                                                    <p class="edit__pred__name">Родной язык</p>
-                                                    <select class="edit__note__digit" name="edit_pred_09" value="<?= $value['pred_09'] ?>" id="">
-                                                        <option value="<?= $value['pred_09'] ?>" selected hidden>
-                                                            <?= $value['pred_09'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Группа здоровья</p>
+                                                    <input type="text" name="edit_health_group_student" value="<?= $value['health_group_student'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_10">
-                                                    <p class="edit__pred__name">Биология</p>
-                                                    <select class="edit__note__digit" name="edit_pred_10" value="<?= $value['pred_10'] ?>" id="">
-                                                        <option value="<?= $value['pred_10'] ?>" selected hidden>
-                                                            <?= $value['pred_10'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Текущая учебная группа</p>
+                                                    <input type="text" name="edit_student_group" value="<?= $value['student_group'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_11">
-                                                    <p class="edit__pred__name">Экономика образовательного учреждения</p>
-                                                    <select class="edit__note__digit" name="edit_pred_11" value="<?= $value['pred_11'] ?>" id="">
-                                                        <option value="<?= $value['pred_11'] ?>" selected hidden>
-                                                            <?= $value['pred_11'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <hr>
+                                                <h5>Данные о родителях</h5>
+                                                <h5>Мать:</h5>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Фамилия</p>
+                                                    <input type="text" name="edit_surname_mom" value="<?= $value['surname_mom'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_12">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_12" value="<?= $value['pred_12'] ?>" id="">
-                                                        <option value="<?= $value['pred_12'] ?>" selected hidden>
-                                                            <?= $value['pred_12'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Имя</p>
+                                                    <input type="text" name="edit_name_mom" value="<?= $value['name_mom'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_13">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_13" value="<?= $value['pred_13'] ?>" id="">
-                                                        <option value="<?= $value['pred_13'] ?>" selected hidden>
-                                                            <?= $value['pred_13'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Отчество</p>
+                                                    <input type="text" name="edit_patronymic_mom" value="<?= $value['patronymic_mom'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_14">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_14" value="<?= $value['pred_14'] ?>" id="">
-                                                        <option value="<?= $value['pred_14'] ?>" selected hidden>
-                                                            <?= $value['pred_14'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Телефон</p>
+                                                    <input type="text" name="edit_phone_mom" value="<?= $value['phone_mom'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_15">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_15" value="<?= $value['pred_15'] ?>" id="">
-                                                        <option value="<?= $value['pred_15'] ?>" selected hidden>
-                                                            <?= $value['pred_15'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Место работы, должность</p>
+                                                    <input type="text" name="edit_job_mom" value="<?= $value['job_mom'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_16">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_16" value="<?= $value['pred_16'] ?>" id="">
-                                                        <option value="<?= $value['pred_16'] ?>" selected hidden>
-                                                            <?= $value['pred_16'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <h5>Отец:</h5>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Фамилия</p>
+                                                    <input type="text" name="edit_surname_father" value="<?= $value['surname_father'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_17">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_17" value="<?= $value['pred_17'] ?>" id="">
-                                                        <option value="<?= $value['pred_17'] ?>" selected hidden>
-                                                            <?= $value['pred_17'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Имя</p>
+                                                    <input type="text" name="edit_name_father" value="<?= $value['name_father'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_18">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_18" value="<?= $value['pred_18'] ?>" id="">
-                                                        <option value="<?= $value['pred_18'] ?>" selected hidden>
-                                                            <?= $value['pred_18'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Отчество</p>
+                                                    <input type="text" name="edit_patronymic_father" value="<?= $value['patronymic_father'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_19">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_19" value="<?= $value['pred_19'] ?>" id="">
-                                                        <option value="<?= $value['pred_19'] ?>" selected hidden>
-                                                            <?= $value['pred_19'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Телефон</p>
+                                                    <input type="text" name="edit_phone_father" value="<?= $value['phone_father'] ?>">
                                                 </div>
-                                                <div class="form-group edit__notes" id="edit__note_20">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_20" value="<?= $value['pred_20'] ?>" id="">
-                                                        <option value="<?= $value['pred_20'] ?>" selected hidden>
-                                                            <?= $value['pred_20'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group edit__notes" id="edit__note_21">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_21" value="<?= $value['pred_21'] ?>" id="">
-                                                        <option value="<?= $value['pred_21'] ?>" selected hidden>
-                                                            <?= $value['pred_21'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group edit__notes" id="edit__note_22">
-                                                    <p class="edit__pred__name">Теоретические и прикладные аспекты
-                                                        методической работы учителя
-                                                        физической культуры</p>
-                                                    <select class="edit__note__digit" name="edit_pred_22" value="<?= $value['pred_22'] ?>" id="">
-                                                        <option value="<?= $value['pred_22'] ?>" selected hidden>
-                                                            <?= $value['pred_22'] ?></option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="Зачтено">Зачтено</option>
-                                                        <option value="Не зачтено">Не зачтено</option>
-                                                        <option value=""></option>
-                                                    </select>
+                                                <div class="form-group edit__notes">
+                                                    <p class="edit__pred__name">Место работы, должность</p>
+                                                    <input type="text" name="edit_job_father" value="<?= $value['job_father'] ?>">
                                                 </div>
 
                                                 <div class="modal-footer">
@@ -444,7 +200,7 @@ if ($user_id == 70) {
                             </div>
 
                             <!-- DELETE MODAL -->
-                            <div class="modal fade" id="deleteModal<?= $value['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="deleteModal<?= $value['id'] ?>delete_student" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content shadow">
                                         <div class="modal-header">
@@ -460,7 +216,7 @@ if ($user_id == 70) {
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                            <form action="?id=<?= $value['id'] ?>" method="post">
+                                            <form action="?id=<?= $value['id'] ?>delete_student" method="post">
                                                 <button type="submit" name="delete_submit" class="btn btn-danger">Удалить</button>
                                             </form>
                                         </div>
@@ -542,7 +298,7 @@ if ($user_id == 70) {
                                 <input type="text" name="hobbies_student" placeholder="Занятость во внеурочное время">
                                 <br>
                                 <input type="text" name="health_group_student" placeholder="Группа здоровья">
-                                <input type="text" name="student_group" value="<?php echo "$curator_group"; ?>">
+                                <input type="text" name="student_group" value="<?php echo $curator_group; ?>">
                             </div>
                             <hr>
                             <div class="form-group">
@@ -568,8 +324,9 @@ if ($user_id == 70) {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                <button type="submit" name="submit" class="btn btn-primary">Добавить</button>
+                                <button type="submit" name="add_student" class="btn btn-primary">Добавить</button>
                             </div>
+                            <input type="text" name="curator_group" value="<?php echo $curator_group; ?>">
                         </form>
                     </div>
                 </div>
