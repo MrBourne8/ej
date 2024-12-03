@@ -279,54 +279,106 @@ if ($user_id == 70) {
                         <form action="" method="post">
                             <div class="form-group">
                                 <p>Данные о студенте</p>
-                                <input type="text" name="surname_student" placeholder="Фимилия">
-                                <input type="text" name="name_student" placeholder="Имя">
-                                <input type="text" name="patronymic_student" placeholder="Отчество">
-                                <br>
-                                <input type="text" name="birth_student" placeholder="Дата рождения">
-                                <input type="text" name="phone_student" placeholder="Телефон">
-                                <br>
-                                <label for="gender_student">Пол</label>
-                                <select name="gender_student">
-                                    <option value="М">М</option>
-                                    <option value="Ж">Ж</option>
-                                </select>
-                                <input type="text" name="registration_student" placeholder="Адрес по прописке">
-                                <br>
-                                <input type="text" name="adress_student" placeholder="Адрес фактического проживания">
-                                <br>
-                                <input type="text" name="hobbies_student" placeholder="Занятость во внеурочное время">
-                                <br>
-                                <input type="text" name="health_group_student" placeholder="Группа здоровья">
-                                <input type="text" name="student_group" value="<?php echo $curator_group; ?>">
-                            </div>
-                            <hr>
-                            <div class="form-group">
-                                <h5 class="modal-title">Данные о родителях</h5>
-                                <p>Мать</p>
-                                <input type="text" name="surname_mom" placeholder="Фимилия">
-                                <input type="text" name="name_mom" placeholder="Имя">
-                                <input type="text" name="patronymic_mom" placeholder="Отчество">
-                                <br>
-                                <input type="text" name="phone_mom" placeholder="Телефон">
-                                <br>
-                                <input type="text" name="job_mom" placeholder="Место работы, должность">
-                            </div>
-                            <div class="form-group">
-                                <p>Отец</p>
-                                <input type="text" name="surname_father" placeholder="Фимилия">
-                                <input type="text" name="name_father" placeholder="Имя">
-                                <input type="text" name="patronymic_father" placeholder="Отчество">
-                                <br>
-                                <input type="text" name="phone_father" placeholder="Телефон">
-                                <br>
-                                <input type="text" name="job_father" placeholder="Место работы, должность">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                <button type="submit" name="add_student" class="btn btn-primary">Добавить</button>
-                            </div>
-                            <input type="text" name="curator_group" value="<?php echo $curator_group; ?>">
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Фамилия</p>
+                                    <input type="text" name="surname_student" placeholder="Фимилия">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Имя</p>
+                                    <input type="text" name="name_student" placeholder="Имя">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Отчество</p>
+                                    <input type="text" name="patronymic_student" placeholder="Отчество">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Дата рождения</p>
+                                    <input type="text" name="birth_student" placeholder="Дата рождения">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Телефон</p>
+                                    <input type="text" name="phone_student" placeholder="Телефон">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Пол</p>
+                                    <select name="gender_student">
+                                        <option value="М">М</option>
+                                        <option value="Ж">Ж</option>
+                                    </select>
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Адрес по прописке</p>
+                                    <input type="text" name="registration_student" placeholder="Адрес по прописке">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Адрес фактического проживания</p>
+                                    <input type="text" name="adress_student" placeholder="Адрес фактического проживания">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Занятость во внеурочное время</p>
+                                    <input type="text" name="hobbies_student" placeholder="Занятость во внеурочное время">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Группа здоровья</p>
+                                    <input type="text" name="health_group_student" placeholder="Группа здоровья">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Текущая учебная группа</p>
+                                    <input type="text" name="student_group" value="<?php echo $curator_group; ?>">
+                                </div>
+                                <hr>
+                                <div class="form-group edit__notes">
+                                    <h5 class="modal-title">Данные о родителях</h5>
+                                    <p>Мать</p>
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Фамилия</p>
+                                    <input type="text" name="surname_mom" placeholder="Фимилия">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Имя</p>
+                                    <input type="text" name="name_mom" placeholder="Имя">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Отчество</p>
+                                    <input type="text" name="patronymic_mom" placeholder="Отчество">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Телефон</p>
+                                    <input type="text" name="phone_mom" placeholder="Телефон">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Место работы, должность</p>
+                                    <input type="text" name="job_mom" placeholder="Место работы, должность">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p>Отец</p>
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Фамилия</p>
+                                    <input type="text" name="surname_father" placeholder="Фимилия">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Имя</p>
+                                    <input type="text" name="name_father" placeholder="Имя">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Отчество</p>
+                                    <input type="text" name="patronymic_father" placeholder="Отчество">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Телефон</p>
+                                    <input type="text" name="phone_father" placeholder="Телефон">
+                                </div>
+                                <div class="form-group edit__notes">
+                                    <p class="edit__pred__name">Место работы, должность</p>
+                                    <input type="text" name="job_father" placeholder="Место работы, должность">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                    <button type="submit" name="add_student" class="btn btn-primary">Добавить</button>
+                                </div>
+                                <input type="text" name="curator_group" value="<?php echo $curator_group; ?>">
                         </form>
                     </div>
                 </div>
