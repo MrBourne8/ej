@@ -37,9 +37,6 @@ require "../func_administrator.php";
         </div>
     </header>
     <div class="container">
-
-
-
         <div class="row base__group__content">
             <div class="col-md-6">
                 <h5 class="page__title">Реализуемые специальности</h5>
