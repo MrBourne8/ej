@@ -4,10 +4,10 @@
             <a href="../login.php" class="main__login" title="Войти в систему">Авторизация <i class="bi bi-key"></i></a>
             <a href="../singup.php" class="main__singup" title="Зарегистрироватся в системе" hidden>Регистрация</a>
         </div>
-        <div>
-            <h3>Действующие модули системы:</h3>
-            <p class="modules__item">Кураторы</p>
+        <div>раторы</p>
             <ul>
+            <h3>Действующие модули системы:</h3>
+            <p class="modules__item">Ку
                 <li>Электронные ведомости</li>
                 <li>Контроль пропусков занятий</li>
                 <li>Отчеты кураторов</li>

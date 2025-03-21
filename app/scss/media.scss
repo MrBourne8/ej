@@ -2,12 +2,13 @@
 
 /* Large Devices, Wide Screens */
 
-@media only screen and (max-width: 1200px) {}
-
-/**/
-.container {
-    width: 95% !important;
+@media only screen and (max-width: 1200px) {
+    .container {
+        max-width: 100% !important;
+        padding: 0 10px;
+    }
 }
+
 
 .modal-dialog {
     max-width: 640px !important;
@@ -16,9 +17,10 @@
 /* Medium Devices, Desktops */
 
 @media only screen and (max-width: 992px) {
-    .container {
-        width: 95% !important;
-    }
+  .container {
+      max-width: 100% !important;
+      padding: 0 10px;
+  }
 }
 
 /**/
@@ -26,10 +28,10 @@
 /* Small Devices, Tablets */
 
 @media only screen and (max-width: 768px) {
-
-    .container {
-        width: 95%  !important;
-    }
+.container {
+    max-width: 100% !important;
+    padding: 0 10px;
+}
 
     /*Disable Animation on Mobile Devices*/
     .animated {
@@ -58,7 +60,10 @@
 /* Extra Small Devices, Phones */
 
 @media only screen and (max-width: 480px) {
-
+.container {
+    max-width: 100% !important;
+    padding: 0 10px;
+}
 
     .login__form {
         max-width: 90% !important;
@@ -215,7 +220,10 @@
 /* Custom, iPhone Retina */
 
 @media only screen and (max-width: 320px) {
-    
+    .container {
+        max-width: 100% !important;
+        padding: 0 10px;
+    }
 }
 
 /**/
@@ -230,7 +238,8 @@
 
 @media only screen and (min-width: 320px) {
     .container {
-        width: 95% !important;
+        max-width: 100% !important;
+        padding: 0 10px;
     }
 }
 
@@ -239,9 +248,10 @@
 /* Extra Small Devices, Phones */
 
 @media only screen and (min-width: 480px) {
-    .container {
-        width: 95% !important;
-    }
+  .container {
+      max-width: 100% !important;
+      padding: 0 10px;
+  }
 }
 
 /**/
@@ -250,7 +260,8 @@
 
 @media only screen and (min-width: 768px) {
     .container {
-        width: 95% !important;
+        max-width: 100% !important;
+        padding: 0 10px;
     }
 }
 
@@ -260,7 +271,8 @@
 
 @media only screen and (min-width: 992px) {
     .container {
-        width: 95% !important;
+        max-width: 100% !important;
+        padding: 0 10px;
     }
 }
 
@@ -269,18 +281,20 @@
 /* Large Devices, Wide Screens */
 
 @media only screen and (min-width: 1200px) {
-    .container {
-        max-width: 95% !important;
-    }
+  .container {
+      max-width: 100% !important;
+      padding: 0 10px;
+  }
 }
 
 
 /* Large Devices, Wide Screens */
 
 @media only screen and (min-width: 1400px) {
-    .container {
-        max-width: 95% !important;
-    }
+   .container {
+       max-width: 100% !important;
+       padding: 0 10px;
+   }
 }
 
 

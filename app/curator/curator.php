@@ -191,7 +191,7 @@ if ($user_id == 70) {
 
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                                    <button type="submit" name="edit-submit" class="btn btn-primary">Обновить</button>
+                                                    <button type="submit" name="edit_student" class="btn btn-primary">Обновить</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -205,7 +205,7 @@ if ($user_id == 70) {
                                     <div class="modal-content shadow">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Удалить студента
-                                                <span><?= $value['students'] ?></span>
+                                                <span><?= $value['name_student'] ?> <?= $value['surname_student'] ?> <?= $value['patronymic_student'] ?></span>
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -217,7 +217,7 @@ if ($user_id == 70) {
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
                                             <form action="?id=<?= $value['id'] ?>delete_student" method="post">
-                                                <button type="submit" name="delete_submit" class="btn btn-danger">Удалить</button>
+                                                <button type="submit" name="delete_student" class="btn btn-danger">Удалить</button>
                                             </form>
                                         </div>
                                     </div>
@@ -293,38 +293,38 @@ if ($user_id == 70) {
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Дата рождения</p>
-                                    <input type="text" name="birth_student" placeholder="Дата рождения">
+                                    <input type="text" name="add_birth_student" placeholder="Дата рождения">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Телефон</p>
-                                    <input type="text" name="phone_student" placeholder="Телефон">
+                                    <input type="text" name="add_phone_student" placeholder="Телефон">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Пол</p>
-                                    <select name="gender_student">
+                                    <select name="add_gender_student">
                                         <option value="М">М</option>
                                         <option value="Ж">Ж</option>
                                     </select>
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Адрес по прописке</p>
-                                    <input type="text" name="registration_student" placeholder="Адрес по прописке">
+                                    <input type="text" name="add_registration_student" placeholder="Адрес по прописке">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Адрес фактического проживания</p>
-                                    <input type="text" name="adress_student" placeholder="Адрес фактического проживания">
+                                    <input type="text" name="add_adress_student" placeholder="Адрес фактического проживания">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Занятость во внеурочное время</p>
-                                    <input type="text" name="hobbies_student" placeholder="Занятость во внеурочное время">
+                                    <input type="text" name="add_hobbies_student" placeholder="Занятость во внеурочное время">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Группа здоровья</p>
-                                    <input type="text" name="health_group_student" placeholder="Группа здоровья">
+                                    <input type="text" name="add_health_group_student" placeholder="Группа здоровья">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Текущая учебная группа</p>
-                                    <input type="text" name="student_group" value="<?php echo $curator_group; ?>">
+                                    <input type="text" name="add_student_group" value="<?php echo $curator_group; ?>">
                                 </div>
                                 <hr>
                                 <div class="form-group edit__notes">
@@ -333,46 +333,46 @@ if ($user_id == 70) {
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Фамилия</p>
-                                    <input type="text" name="surname_mom" placeholder="Фимилия">
+                                    <input type="text" name="add_surname_mom" placeholder="Фимилия">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Имя</p>
-                                    <input type="text" name="name_mom" placeholder="Имя">
+                                    <input type="text" name="add_name_mom" placeholder="Имя">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Отчество</p>
-                                    <input type="text" name="patronymic_mom" placeholder="Отчество">
+                                    <input type="text" name="add_patronymic_mom" placeholder="Отчество">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Телефон</p>
-                                    <input type="text" name="phone_mom" placeholder="Телефон">
+                                    <input type="text" name="add_phone_mom" placeholder="Телефон">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Место работы, должность</p>
-                                    <input type="text" name="job_mom" placeholder="Место работы, должность">
+                                    <input type="text" name="add_job_mom" placeholder="Место работы, должность">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p>Отец</p>
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Фамилия</p>
-                                    <input type="text" name="surname_father" placeholder="Фимилия">
+                                    <input type="text" name="add_surname_father" placeholder="Фимилия">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Имя</p>
-                                    <input type="text" name="name_father" placeholder="Имя">
+                                    <input type="text" name="add_name_father" placeholder="Имя">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Отчество</p>
-                                    <input type="text" name="patronymic_father" placeholder="Отчество">
+                                    <input type="text" name="add_patronymic_father" placeholder="Отчество">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Телефон</p>
-                                    <input type="text" name="phone_father" placeholder="Телефон">
+                                    <input type="text" name="add_phone_father" placeholder="Телефон">
                                 </div>
                                 <div class="form-group edit__notes">
                                     <p class="edit__pred__name">Место работы, должность</p>
-                                    <input type="text" name="job_father" placeholder="Место работы, должность">
+                                    <input type="text" name="add_job_father" placeholder="Место работы, должность">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
