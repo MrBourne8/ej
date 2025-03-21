@@ -95,7 +95,7 @@ if (isset($_POST['delete_student'])) {
 // Вывод списка студентов
 $stmt = $pdo->query("SHOW TABLES LIKE 'stydents_$curator_group'");
 if ($stmt->rowCount() > 0) {
-	$sql = $pdo->prepare("SELECT * FROM `stydents_$curator_group`");
+	$sql = $pdo->prepare("SELECT * FROM `stydents_$curator_group`  ORDER BY `surname_student` ASC");
 	$sql->execute();
 	$result_stydents = $sql->fetchAll();
 } else {

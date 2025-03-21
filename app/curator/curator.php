@@ -55,7 +55,7 @@ if ($user_id == 70) {
 
                 <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><i class="fa fa-user-plus" title="Добавить студента"></i> Добавить студента</button>
                 <h4 class="page__title">Общие сведения об обучающихся</h4>
-                <table class="table shadow table__report" id="myTable" style="border-collapse: collapse;">
+                <table class="table shadow table__students" id="myTable" style="border-collapse: collapse;">
                     <thead class="thead-dark thead__fixed">
                         <tr height="50">
                             <th style="font-weight: 200;">№</th>
@@ -73,13 +73,13 @@ if ($user_id == 70) {
                         <?php foreach ($result_stydents as $value) { ?>
                             <tr class="students__row">
                                 <td id="nuber__students"></td>
-                                <td id="nuber__students"><?= $value['surname_student'] ?> <?= $value['name_student'] ?> <?= $value['patronymic_student'] ?></td>
-                                <td id="nuber__students"><?= $value['birth_student'] ?></td>
-                                <td id="nuber__students"><?= $value['gender_student'] ?></td>
-                                <td id="nuber__students"><?= $value['phone_student'] ?></td>
-                                <td id="nuber__students"><?= $value['surname_mom'] ?> <?= $value['name_mom'] ?> <?= $value['patronymic_mom'] ?></td>
-                                <td id="nuber__students"><?= $value['surname_father'] ?> <?= $value['name_father'] ?> <?= $value['patronymic_father'] ?></td>
-                                <td id="nuber__students"><?= $value['registration_student'] ?></td>
+                                <td class="name_students"><?= $value['surname_student'] ?> <?= $value['name_student'] ?> <?= $value['patronymic_student'] ?></td>
+                                <td ><?= $value['birth_student'] ?></td>
+                                <td ><?= $value['gender_student'] ?></td>
+                                <td ><?= $value['phone_student'] ?></td>
+                                <td ><?= $value['surname_mom'] ?> <?= $value['name_mom'] ?> <?= $value['patronymic_mom'] ?></td>
+                                <td ><?= $value['surname_father'] ?> <?= $value['name_father'] ?> <?= $value['patronymic_father'] ?></td>
+                                <td ><?= $value['registration_student'] ?></td>
                                 <td class="action">
                                     <a href="?edit=<?= $value['id'] ?>edit_student" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModal<?= $value['id'] ?>edit_student"><i class="fa fa-edit"></i></a>
                                     <a href="?delete=<?= $value['id'] ?>delete_student" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>delete_student"><i class="fa fa-trash"></i></a>

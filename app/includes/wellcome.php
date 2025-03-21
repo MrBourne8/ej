@@ -1,5 +1,5 @@
 <div class="welcome__user">
-    <p id="welcome__user__text">Здравствуйте, <?php echo $_SESSION['logged_user']->fi ?>!</p>
+    <p id="welcome__user__text">Здравствуйте, <?php echo $_SESSION['logged_user']->login ?>!</p>
     <img src="../images/dest/user_avatar.svg" alt="User Avatar" class="user__avatar">
     <a href="/logout.php" title="Выход"><i class="fas fa-sign-out-alt header__exit"></i></a>
 

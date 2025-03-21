@@ -198,16 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    $('.base__table__speciality tbody tr').each(function (i) {
+    $('.table__students tbody tr').each(function (i) {
         var number = i + 1;
         $(this).find('td:first').text(number + ".");
     });
-    $('.base__table__group tbody tr').each(function (i) {
-        var number = i + 1;
-        $(this).find('td:first').text(number + ".");
-    });
-
-    
+       
 
 
     // Создание массива студентов, заголовки таблицы
@@ -25118,81 +25113,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    let numberLesson = document.querySelector('.number_lesson')
-    let timeLesson = document.querySelector('.time__lesson')
-
-    let scheduleTeacherId = document.querySelector('.schedule__teacher__id')
-    let teacherName = document.querySelector('.teacher__name')
-
-    let editScheduleTeacherId_1 = document.querySelector('.edit__schedule__teacher__id_1')
-    let editTeacherName_1 = document.querySelector('.edit__teacher__name_1')
-
-    let editScheduleTeacherId_2 = document.querySelector('.edit__schedule__teacher__id_2')
-    let editTeacherName_2 = document.querySelector('.edit__teacher__name_2')
-
-    let editScheduleTeacherId_3 = document.querySelector('.edit__schedule__teacher__id_3')
-    let editTeacherName_3 = document.querySelector('.edit__teacher__name_3')
-
-    let editScheduleTeacherId_4 = document.querySelector('.edit__schedule__teacher__id_4')
-    let editTeacherName_4 = document.querySelector('.edit__teacher__name_4')
-
-    let editScheduleTeacherId_5 = document.querySelector('.edit__schedule__teacher__id_5')
-    let editTeacherName_5 = document.querySelector('.edit__teacher__name_5')
-
-    let editScheduleTeacherId_6 = document.querySelector('.edit__schedule__teacher__id_6')
-    let editTeacherName_6 = document.querySelector('.edit__teacher__name_6')
-
-    if (!scheduleTeacherId) {} else {
-        teacherName.addEventListener('change', function () {
-            var selectedOption = teacherName.options[teacherName.selectedIndex];
-            var selectedName = selectedOption.getAttribute('name');
-            scheduleTeacherId.value = selectedName;
-        });
-
-        editTeacherName_1.addEventListener('change', function () {
-            var selectedOption1 = editTeacherName_1.options[teacherName.selectedIndex];
-            var selectedName1 = selectedOption1.getAttribute('name');
-            editScheduleTeacherId_1.value = selectedName1;
-        });
-
-        // editTeacherName_2.addEventListener('change', function () {
-        //     var selectedOption = editTeacherName_2.options[teacherName.selectedIndex];
-        //     var selectedName = selectedOption.getAttribute('name');
-        //     editScheduleTeacherId_2.value = selectedName;
-        // });
-
-        // editTeacherName_3.addEventListener('change', function () {
-        //     var selectedOption = editTeacherName_3.options[teacherName.selectedIndex];
-        //     var selectedName = selectedOption.getAttribute('name');
-        //     editScheduleTeacherId_3.value = selectedName;
-        // });
-
-        // editTeacherName_4.addEventListener('change', function () {
-        //     var selectedOption = editTeacherName_4.options[teacherName.selectedIndex];
-        //     var selectedName = selectedOption.getAttribute('name');
-        //     editScheduleTeacherId_4.value = selectedName;
-        // });
-
-        // editTeacherName_5.addEventListener('change', function () {
-        //     var selectedOption = editTeacherName_5.options[teacherName.selectedIndex];
-        //     var selectedName = selectedOption.getAttribute('name');
-        //     editScheduleTeacherId_5.value = selectedName;
-        // });
-
-        // editTeacherName_6.addEventListener('change', function () {
-        //     var selectedOption = editTeacherName_6.options[teacherName.selectedIndex];
-        //     var selectedName = selectedOption.getAttribute('name');
-        //     editScheduleTeacherId_6.value = selectedName;
-        // });
+   
 
 
-        numberLesson.addEventListener('change', function () {
-            var selectedOption = numberLesson.options[numberLesson.selectedIndex];
-            var selectedName = selectedOption.getAttribute('name');
-            timeLesson.value = selectedName;
-        });
-    }
+// Сортировка списка студентов по алфавиту
+function sortTable() {
+    const table = document.getElementById("myTable");
+    const rows = Array.from(table.rows).slice(1); // Получаем все строки, кроме заголовка
+    const sortedRows = rows.sort((a, b) => {
+        const nameA = a.cells[0].innerText.toLowerCase();
+        const nameB = b.cells[0].innerText.toLowerCase();
+        return nameA.localeCompare(nameB);
+    });
 
+    // Удаляем старые строки и добавляем отсортированные
+    sortedRows.forEach(row => table.appendChild(row));
+}
+// Сортировка списка студентов по алфавиту
 
 
 });

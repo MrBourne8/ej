@@ -833,10 +833,6 @@ template {
 
 .table {
     td {
-        &:nth-child(2) {
-            text-align: center;
-        }
-
         border: 1px solid;
         vertical-align: middle;
         padding: 5px;
@@ -1584,4 +1580,8 @@ span.support {
             width: 100%;
         }
     }
+}
+
+.name_students {
+    text-align: left !important;
 }
