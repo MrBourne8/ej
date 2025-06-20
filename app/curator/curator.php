@@ -55,7 +55,7 @@ if ($user_id == 70) {
 
                 <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><i class="fa fa-user-plus" title="Добавить студента"></i> Добавить студента</button>
                 <h4 class="page__title">Общие сведения об обучающихся</h4>
-                <table class="table shadow table__students" id="myTable" style="border-collapse: collapse;">
+                <table class="table shadow table__students" id="table__students" style="border-collapse: collapse;">
                     <thead class="thead-dark thead__fixed">
                         <tr height="50">
                             <th style="font-weight: 200;">№</th>
@@ -74,12 +74,12 @@ if ($user_id == 70) {
                             <tr class="students__row">
                                 <td id="nuber__students"></td>
                                 <td class="name_students"><?= $value['surname_student'] ?> <?= $value['name_student'] ?> <?= $value['patronymic_student'] ?></td>
-                                <td ><?= $value['birth_student'] ?></td>
-                                <td ><?= $value['gender_student'] ?></td>
-                                <td ><?= $value['phone_student'] ?></td>
-                                <td ><?= $value['surname_mom'] ?> <?= $value['name_mom'] ?> <?= $value['patronymic_mom'] ?></td>
-                                <td ><?= $value['surname_father'] ?> <?= $value['name_father'] ?> <?= $value['patronymic_father'] ?></td>
-                                <td ><?= $value['registration_student'] ?></td>
+                                <td><?= $value['birth_student'] ?></td>
+                                <td><?= $value['gender_student'] ?></td>
+                                <td><?= $value['phone_student'] ?></td>
+                                <td><?= $value['surname_mom'] ?> <?= $value['name_mom'] ?> <?= $value['patronymic_mom'] ?></td>
+                                <td><?= $value['surname_father'] ?> <?= $value['name_father'] ?> <?= $value['patronymic_father'] ?></td>
+                                <td><?= $value['registration_student'] ?></td>
                                 <td class="action">
                                     <a href="?edit=<?= $value['id'] ?>edit_student" class="btn btn-success btn-sm btn_ed" title="Редактировать" data-toggle="modal" data-target="#editModal<?= $value['id'] ?>edit_student"><i class="fa fa-edit"></i></a>
                                     <a href="?delete=<?= $value['id'] ?>delete_student" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>delete_student"><i class="fa fa-trash"></i></a>
@@ -265,6 +265,58 @@ if ($user_id == 70) {
                 <hr>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="page__title">Сведения о месте проживания студентов</h4>
+                <table class="table shadow table__students" id="table__students" style="border-collapse: collapse;">
+                    <thead class="thead-dark thead__fixed">
+                        <tr height="50">
+                            <th style="font-weight: 200;">№</th>
+                            <th style="font-weight: 200;">ФИО</th>
+                            <th style="font-weight: 200;">Телефон</th>
+                            <th style="font-weight: 200;">Адрес по прописке</th>
+                            <th style="font-weight: 200;">Адрес фактического проживания</th>
+                        </tr>
+                    </thead>
+                    <tbody data-name="a">
+                        <?php foreach ($result_stydents as $value) { ?>
+                            <tr class="students__row">
+                                <td id="nuber__students"></td>
+                                <td class="name_students"><?= $value['surname_student'] ?> <?= $value['name_student'] ?> <?= $value['patronymic_student'] ?></td>
+                                <td><?= $value['phone_student'] ?></td>
+                                <td><?= $value['registration_student'] ?></td>
+                                <td><?= $value['adress_student'] ?></td>
+                            </tr>
+
+
+
+
+                            <!-- Modal -->
+                        <?php } ?>
+                    </tbody>
+                    <!-- <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot> -->
+                </table>
+            </div>
+        </div>
         <!-- Modal Добавление студента -->
         <div class="modal fade" tabindex="-1" role="dialog" id="Modal">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -401,19 +453,6 @@ if ($user_id == 70) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="../js/app.min.js"></script>
-
-    <script>
-        var __REPLAIN_ = '7d2c69e9-5e6c-42af-a50b-47dbec7f8564';
-        (function(u) {
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = u;
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-        })('https://widget.replain.cc/dist/client.js');
-    </script>
-
 </body>
 
 </html>
