@@ -52,7 +52,6 @@ if ($user_id == 70) {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
                 <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><i class="fa fa-user-plus" title="Добавить студента"></i> Добавить студента</button>
                 <h4 class="page__title">Общие сведения об обучающихся</h4>
                 <table class="table shadow table__students" id="table__students" style="border-collapse: collapse;">
@@ -85,7 +84,6 @@ if ($user_id == 70) {
                                     <a href="?delete=<?= $value['id'] ?>delete_student" class="btn btn-danger btn-sm" title="Удалить" data-toggle="modal" data-target="#deleteModal<?= $value['id'] ?>delete_student"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
-
                             <!-- Modal Edit-->
                             <div class="modal fade edit__pred__modal" id="editModal<?= $value['id'] ?>edit_student" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -287,10 +285,6 @@ if ($user_id == 70) {
                                 <td><?= $value['registration_student'] ?></td>
                                 <td><?= $value['adress_student'] ?></td>
                             </tr>
-
-
-
-
                             <!-- Modal -->
                         <?php } ?>
                     </tbody>
