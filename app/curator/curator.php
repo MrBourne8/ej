@@ -3,6 +3,13 @@ require "../db.php";
 require "../config.php";
 require "../func_curator.php";
 
+// Проверяем, авторизован ли пользователь
+if (!isset($_SESSION['logged_user'])) {
+    // Перенаправляем на страницу входа
+    header("Location: /login.php");
+    exit();
+}
+
 
 $user_id = $_SESSION['logged_user']->id;
 $curator_group = $_SESSION['logged_user']->curator_group;
